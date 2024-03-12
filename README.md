@@ -20,9 +20,3 @@ En resumen, la arquitectura MVC divide un sistema en tres componentes principale
 
 
 
-Origen: Conversación con Bing, 11/3/2024
-(1) MVC (Modelo-Vista-Controlador): ¿qué es y para qué sirve?. https://codingornot.com/mvc-modelo-vista-controlador-que-es-y-para-que-sirve.
-(2) ¿Qué es MVC y cuáles son sus ventajas? - SEOPRO Marketing Online SL. https://seopromarketing.online/que-es-mvc-ventajas/.
-(3) El patrón modelo-vista-controlador: Arquitectura y frameworks explicados. https://www.freecodecamp.org/espanol/news/el-modelo-de-arquitectura-view-controller-pattern/.
-(4) Sistema de ventas con Spring MVC, MySQL y Bootstrap. https://parzibyte.me/blog/2019/09/04/sistema-ventas-spring-mvc-mysql-bootstrap/.
-(5) Juan-Carlos-Estevez-Vargas/Punto-de-Venta-Java-Swing. https://github.com/Juan-Carlos-Estevez-Vargas/Punto-de-Venta-Java-Swing.
