@@ -1,46 +1,47 @@
 <?php
-class MedidasModel extends Query{
+
+class MedidasModel extends Database {
+    
     public function __construct() {
         parent::__construct();
     }
-    public function getMedidas($estado)
-    {
-        $sql = "SELECT * FROM medidas WHERE estado = $estado";
-        return $this->selectAll($sql);
+    
+    public function getMedidas($estado) {
+        $sql = "SELECT * FROM medidas WHERE estado = ?";
+        $params = array($estado);
+        return $this->query($sql, $params);
     }
-    public function registrar($nombre, $nombre_corto)
-    {
-        $sql = "INSERT INTO medidas (medida, nombre_corto) VALUES (?,?)";
-        $array = array($nombre, $nombre_corto);
-        return $this->insertar($sql, $array);
+    
+    public function registrar($nombre, $nombre_corto) {
+        $sql = "INSERT INTO medidas (medida, nombre_corto) VALUES (?, ?)";
+        $params = array($nombre, $nombre_corto);
+        return $this->execute($sql, $params);
     }
-    public function getValidar($campo, $valor, $accion, $id)
-    {
-        if ($accion == 'registrar' && $id == 0) {
-            $sql = "SELECT id FROM medidas WHERE $campo = '$valor'";
-        }else{
-            $sql = "SELECT id FROM medidas WHERE $campo = '$valor' AND id != $id";
-        }
-        return $this->select($sql);
+    
+    public function getValidar($campo, $valor, $accion, $id) {
+        $sql = ($accion == 'registrar' && $id == 0) ? 
+            "SELECT id FROM medidas WHERE $campo = ?" : 
+            "SELECT id FROM medidas WHERE $campo = ? AND id != ?";
+        $params = ($id == 0) ? array($valor) : array($valor, $id);
+        return $this->query($sql, $params);
     }
-    public function eliminar($estado, $idMedida)
-    {
+    
+    public function eliminar($estado, $idMedida) {
         $sql = "UPDATE medidas SET estado = ? WHERE id = ?";
-        $array = array($estado, $idMedida);
-        return $this->save($sql, $array);
+        $params = array($estado, $idMedida);
+        return $this->execute($sql, $params);
     }
 
-    public function editar($idMedida)
-    {
-        $sql = "SELECT * FROM medidas WHERE id = $idMedida";
-        return $this->select($sql);
+    public function editar($idMedida) {
+        $sql = "SELECT * FROM medidas WHERE id = ?";
+        $params = array($idMedida);
+        return $this->query($sql, $params);
     }
-    public function actualizar($nombre, $nombre_corto, $id)
-    {
+    
+    public function actualizar($nombre, $nombre_corto, $id) {
         $sql = "UPDATE medidas SET medida=?, nombre_corto=? WHERE id=?";
-        $array = array($nombre, $nombre_corto, $id);
-        return $this->save($sql, $array);
+        $params = array($nombre, $nombre_corto, $id);
+        return $this->execute($sql, $params);
     }
 }
-
 ?>
