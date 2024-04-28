@@ -1,4 +1,9 @@
 {
+    "autoload-dev": {
+        "classmap": [
+            "pos/"
+        ]
+    },
     "require": {
         "dompdf/dompdf": "^2.0",
         "mike42/escpos-php": "^2.2",

@@ -1,4 +1,4 @@
-?php include_once 'views/templates/header.php'; ?>
+<?php include_once 'views/templates/header.php'; ?>
 
 <div class="error-404 d-flex align-items-center justify-content-center">
     <div class="container">
