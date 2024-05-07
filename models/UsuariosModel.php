@@ -3,6 +3,11 @@ class UsuariosModel extends Query{
     public function __construct() {
         parent::__construct();
     }
+    public function getRoles($estado)
+    {
+        $sql = "SELECT * FROM roles WHERE estado = $estado";
+        return $this->selectAll($sql);
+    }
     public function getUsuarios($estado)
     {
         $sql = "SELECT id, CONCAT(nombre, ' ', apellido) AS nombres, correo, telefono, direccion, rol FROM usuarios WHERE estado = $estado";

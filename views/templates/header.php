@@ -40,7 +40,7 @@
                     <img src="<?php echo BASE_URL; ?>assets/images/logo.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">SISTEMA</h4>
+                    <h4 class="logo-text">PV</h4>
                 </div>
                 <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
                 </div>
@@ -54,46 +54,65 @@
                         <div class="menu-title">Tablero</div>
                     </a>
                 </li>
-                <?php if ($_SESSION['rol'] == 1) { ?>
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="fa-solid fa-screwdriver-wrench"></i>
-                            </div>
-                            <div class="menu-title">Administración</div>
-                        </a>
-                        <ul>
-                            <li> <a href="<?php echo BASE_URL . 'usuarios'; ?>"><i class="bx bx-right-arrow-alt"></i>Usuarios</a>
-                            </li>
-                            <li> <a href="<?php echo BASE_URL . 'admin/datos'; ?>"><i class="bx bx-right-arrow-alt"></i>Configuracion</a>
-                            </li>
-                            <li> <a href="<?php echo BASE_URL . 'admin/logs'; ?>"><i class="bx bx-right-arrow-alt"></i>Log de Acceso</a>
-                            </li>
-                        </ul>
-                    </li>
-                <?php } ?>
+                <?php if (verificar('usuarios') || verificar('configuracion') || verificar('log de acceso') || verificar('roles')) { ?>
                 <li>
                     <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="fa-solid fa-clipboard-list"></i>
+                        <div class="parent-icon"><i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
-                        <div class="menu-title">Mantenimiento</div>
+                        <div class="menu-title">Administración</div>
                     </a>
                     <ul>
-                        <li> <a href="<?php echo BASE_URL . 'medidas'; ?>"><i class="bx bx-right-arrow-alt"></i>Medidas</a>
-                        </li>
-                        <li> <a href="<?php echo BASE_URL . 'categorias'; ?>"><i class="bx bx-right-arrow-alt"></i>Categorias</a>
-                        </li>
-                        <li> <a href="<?php echo BASE_URL . 'productos'; ?>"><i class="bx bx-right-arrow-alt"></i>Productos</a>
-                        </li>
+                        <?php if (verificar('usuarios')) { ?>
+                            <li> <a href="<?php echo BASE_URL . 'usuarios'; ?>"><i class="bx bx-right-arrow-alt"></i>Usuarios</a>
+                            </li>
+                        <?php }
+                        if (verificar('roles')) { ?>
+                            <li> <a href="<?php echo BASE_URL . 'roles'; ?>"><i class="bx bx-right-arrow-alt"></i>Roles</a>
+                            </li>
+                        <?php }
+                        if (verificar('configuracion')) { ?>
+                            <li> <a href="<?php echo BASE_URL . 'admin/datos'; ?>"><i class="bx bx-right-arrow-alt"></i>Configuracion</a>
+                            </li>
+                        <?php }
+                        if (verificar('log de acceso')) { ?>
+                            <li> <a href="<?php echo BASE_URL . 'admin/logs'; ?>"><i class="bx bx-right-arrow-alt"></i>Log de Acceso</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'clientes'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-users"></i>
-                        </div>
-                        <div class="menu-title">Clientes</div>
-                    </a>
-                </li>
-                <?php if ($_SESSION['rol'] == 1) { ?>
+                <?php } if (verificar('medidas') || verificar('categorias') || verificar('productos')) { ?>
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                            <div class="menu-title">Mantenimiento</div>
+                        </a>
+                        <ul>
+                            <?php if (verificar('medidas')) { ?>
+                                <li> <a href="<?php echo BASE_URL . 'medidas'; ?>"><i class="bx bx-right-arrow-alt"></i>Medidas</a>
+                                </li>
+                            <?php }
+                            if (verificar('categorias')) { ?>
+                                <li> <a href="<?php echo BASE_URL . 'categorias'; ?>"><i class="bx bx-right-arrow-alt"></i>Categorias</a>
+                                </li>
+                            <?php }
+                            if (verificar('productos')) { ?>
+                                <li> <a href="<?php echo BASE_URL . 'productos'; ?>"><i class="bx bx-right-arrow-alt"></i>Productos</a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                <?php }
+                if (verificar('clientes')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'clientes'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="menu-title">Clientes</div>
+                        </a>
+                    </li>
+                <?php }
+                if (verificar('proveedores')) { ?>
                     <li>
                         <a href="<?php echo BASE_URL . 'proveedor'; ?>">
                             <div class="parent-icon"><i class="fa-solid fa-cart-flatbed-suitcase"></i>
@@ -102,49 +121,61 @@
                         </a>
                     </li>
                 <?php } ?>
-                <li>
-                    <a href="<?php echo BASE_URL . 'cajas'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
-                        </div>
-                        <div class="menu-title">Cajas</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'compras'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-truck-fast"></i>
-                        </div>
-                        <div class="menu-title">Compras</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'ventas'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-cash-register"></i>
-                        </div>
-                        <div class="menu-title">Ventas</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'creditos'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-credit-card"></i>
-                        </div>
-                        <div class="menu-title">Administrar Creditos</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'cotizaciones'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-rectangle-list"></i>
-                        </div>
-                        <div class="menu-title">Cotizaciones</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo BASE_URL . 'apartados'; ?>">
-                        <div class="parent-icon"><i class="fa-solid fa-people-arrows"></i>
-                        </div>
-                        <div class="menu-title">Apartados</div>
-                    </a>
-                </li>
-                <?php if ($_SESSION['rol'] == 1) { ?>
+                <?php if (verificar('cajas')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'cajas'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-box-open"></i>
+                            </div>
+                            <div class="menu-title">Cajas</div>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if (verificar('compras')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'compras'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                            <div class="menu-title">Compras</div>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if (verificar('ventas')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'ventas'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-cash-register"></i>
+                            </div>
+                            <div class="menu-title">Ventas</div>
+                        </a>
+                    </li>
+                <?php }
+                if (verificar('credito ventas')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'creditos'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-credit-card"></i>
+                            </div>
+                            <div class="menu-title">Administrar Creditos</div>
+                        </a>
+                    </li>
+                <?php }
+                if (verificar('cotizaciones')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'cotizaciones'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-rectangle-list"></i>
+                            </div>
+                            <div class="menu-title">Cotizaciones</div>
+                        </a>
+                    </li>
+                <?php }
+                if (verificar('apartados')) { ?>
+                    <li>
+                        <a href="<?php echo BASE_URL . 'apartados'; ?>">
+                            <div class="parent-icon"><i class="fa-solid fa-people-arrows"></i>
+                            </div>
+                            <div class="menu-title">Apartados</div>
+                        </a>
+                    </li>
+                <?php }
+                if (verificar('inventario')) { ?>
                     <li>
                         <a href="<?php echo BASE_URL . 'inventarios'; ?>">
                             <div class="parent-icon"><i class="fa-solid fa-file-lines"></i>

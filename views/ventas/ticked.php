@@ -55,6 +55,16 @@
                 <td class="text-right" colspan="3">Total sin descuento</td>
                 <td class="text-right"><?php echo number_format($data['venta']['total'], 2); ?></td>
             </tr>
+
+            <tr>
+                <td class="text-right" colspan="3">Pago con</td>
+                <td class="text-right"><?php echo number_format($data['venta']['pago'], 2); ?></td>
+            </tr>
+            <tr>
+                <td class="text-right" colspan="3">Cambio</td>
+                <td class="text-right"><?php echo number_format($data['venta']['pago'] - $data['venta']['total'], 2); ?></td>
+            </tr>
+
         </tbody>
     </table>
     <div class="mensaje">

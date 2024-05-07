@@ -1,14 +1,12 @@
 <?php
-class PrincipalModel extends Query
-{
-    public function __construct()
-    {
+class PrincipalModel extends Query{
+    public function __construct() {
         parent::__construct();
     }
     //datos para login
     public function getDatos($correo)
     {
-        $sql = "SELECT id, nombre, correo, perfil, clave, rol, estado FROM usuarios WHERE correo = '$correo'";
+        $sql = "SELECT u.id, u.nombre, u.correo, u.perfil, u.clave, u.rol, u.estado, r.nombre, r.permisos FROM usuarios u INNER JOIN roles r ON u.rol = r.id WHERE u.correo = '$correo'";
         return $this->select($sql);
     }
     public function verificarCorreo($correo)
@@ -45,3 +43,5 @@ class PrincipalModel extends Query
         return $this->insertar($sql, $array);
     }
 }
+
+?>

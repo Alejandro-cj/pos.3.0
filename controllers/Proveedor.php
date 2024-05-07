@@ -12,7 +12,7 @@ class Proveedor extends Controller
     }
     public function index()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -22,7 +22,7 @@ class Proveedor extends Controller
     }
     public function listar()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -38,7 +38,7 @@ class Proveedor extends Controller
     }
     public function registrar()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -128,7 +128,7 @@ class Proveedor extends Controller
 
     public function eliminar($idProveedor)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -148,7 +148,7 @@ class Proveedor extends Controller
 
     public function editar($idProveedor)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -158,7 +158,7 @@ class Proveedor extends Controller
     }
     public function inactivos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -168,7 +168,7 @@ class Proveedor extends Controller
     }
     public function listarInactivos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -183,7 +183,7 @@ class Proveedor extends Controller
     }
     public function restaurar($idProveedor)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('proveedores')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }

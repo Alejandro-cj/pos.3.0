@@ -14,7 +14,7 @@ class Inventarios extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('inventario')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }

@@ -9,22 +9,23 @@ class Usuarios extends Controller
         if (empty($_SESSION['id_usuario'])) {
             header('Location: ' . BASE_URL);
             exit;
-        }
+        }        
         $this->id_usuario = $_SESSION['id_usuario'];
     }
     public function index()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
         $data['title'] = 'Usuarios';
         $data['script'] = 'usuarios.js';
+        $data['roles'] = $this->model->getRoles(1);
         $this->views->getView('usuarios', 'index', $data);
     }
     public function listar()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -37,8 +38,7 @@ class Usuarios extends Controller
                 <button class="btn btn-danger" type="button" onclick="eliminarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-times-circle"></i></button>
                 <button class="btn btn-info" type="button" onclick="editarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
                 </div>';
-            }
-
+            }            
             if ($data[$i]['rol'] == 1) {
                 $data[$i]['rol'] = '<span class="badge bg-success">ADMINISTRADOR</span>';
             } else {
@@ -51,7 +51,7 @@ class Usuarios extends Controller
     //metodo para registrar y modificar
     public function registrar()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -144,7 +144,7 @@ class Usuarios extends Controller
     //metodo para eliminar registro
     public function eliminar($id)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -167,7 +167,7 @@ class Usuarios extends Controller
     }
     public function editar($id)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -178,7 +178,7 @@ class Usuarios extends Controller
     //vista inactivos
     public function inactivos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -188,7 +188,7 @@ class Usuarios extends Controller
     }
     public function listarInactivos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -209,7 +209,7 @@ class Usuarios extends Controller
     //metodo para eliminar registro
     public function restaurar($id)
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('usuarios')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }

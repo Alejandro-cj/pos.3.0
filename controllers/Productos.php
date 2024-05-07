@@ -17,6 +17,10 @@ class Productos extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('productos')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
     }
     public function index()
     {
@@ -31,7 +35,7 @@ class Productos extends Controller
         $data = $this->model->getProductos(1);
         for ($i = 0; $i < count($data); $i++) {
             $foto = ($data[$i]['foto'] == null) ? 'assets/images/productos/default.png' :  $data[$i]['foto'];
-            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $foto . '" width="50">';
+            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . BASE_URL . $foto . '" width="50">';
             $data[$i]['acciones'] = '<div>
             <button class="btn btn-danger" type="button" onclick="eliminarProducto(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
             <button class="btn btn-info" type="button" onclick="editarProducto(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
@@ -96,11 +100,14 @@ class Productos extends Controller
                             $res = array('msg' => 'ERROR AL REGISTRAR', 'type' => 'error');
                         }
                     } else {
-                        $res = array('msg' => 'EL CODIGO DEBE SER ÚNICO', 'type' => 'warning');
+                        $res = array('msg' => 'LA CODIGO DEBE SER ÚNICO', 'type' => 'warning');
                     }
                 } else {
                     $verificar = $this->model->getValidar('codigo', $codigo, 'actualizar', $id);
                     if (empty($verificar)) {
+                        //temp
+                        $temp = $this->model->editar($id);
+                        $imgTemp = ($temp['foto'] != null) ? $temp['foto'] : 'default.png';
                         $data = $this->model->actualizar(
                             $codigo,
                             $nombre,
@@ -112,6 +119,9 @@ class Productos extends Controller
                             $id
                         );
                         if ($data > 0) {
+                            if (file_exists($imgTemp) && $imgTemp != 'default.png') {
+                                unlink($imgTemp);
+                            }
                             if (!empty($name)) {
                                 move_uploaded_file($tmp, $destino);
                             }
@@ -165,7 +175,7 @@ class Productos extends Controller
     {
         $data = $this->model->getProductos(0);
         for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['foto'] . '" width="100">';
+            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . BASE_URL . $data[$i]['foto'] . '" width="100">';
             $data[$i]['acciones'] = '<div>
             <button class="btn btn-danger" type="button" onclick="restaurarProducto(' . $data[$i]['id'] . ')"><i class="fas fa-check-circle"></i></button>
             </div>';
@@ -212,6 +222,8 @@ class Productos extends Controller
             $result['id'] = $row['id'];
             $result['label'] = $row['descripcion'];
             $result['stock'] = $row['cantidad'];
+            $result['precio_venta'] = $row['precio_venta'];
+            $result['precio_compra'] = $row['precio_compra'];
             array_push($array, $result);
         }
         echo json_encode($array, JSON_UNESCAPED_UNICODE);
@@ -231,11 +243,11 @@ class Productos extends Controller
                 $result = $this->model->editar($producto['id']);
                 $data['id'] = $result['id'];
                 $data['nombre'] = $result['descripcion'];
-                $data['precio_compra'] = $result['precio_compra'];
-                $data['precio_venta'] = $result['precio_venta'];
+                $data['precio_compra'] = number_format((empty($producto['precio'])) ? 0 : $producto['precio'], 2, '.', '');
+                $data['precio_venta'] = number_format((empty($producto['precio'])) ? 0 : $producto['precio'], 2, '.', '');
                 $data['cantidad'] = $producto['cantidad'];
-                $subTotalCompra = $result['precio_compra'] * $producto['cantidad'];
-                $subTotalVenta = $result['precio_venta'] * $producto['cantidad'];
+                $subTotalCompra = $data['precio_compra'] * $producto['cantidad'];
+                $subTotalVenta = $data['precio_venta'] * $producto['cantidad'];
                 $data['subTotalCompra'] = number_format($subTotalCompra, 2);
                 $data['subTotalVenta'] = number_format($subTotalVenta, 2);
                 array_push($array['productos'], $data);
@@ -245,6 +257,7 @@ class Productos extends Controller
         }
         $array['totalCompra'] = number_format($totalCompra, 2);
         $array['totalVenta'] = number_format($totalVenta, 2);
+        $array['totalVentaSD'] = number_format($totalVenta, 2, '.', '');
         echo json_encode($array, JSON_UNESCAPED_UNICODE);
         die();
     }
@@ -328,7 +341,7 @@ class Productos extends Controller
         $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
         $ruta = 'assets/images/barcode/';
         foreach ($data['productos'] as $producto) {
-            file_put_contents($ruta . $producto['id'] . '.png', $generator->getBarcode($producto['codigo'], $generator::TYPE_CODE_128, 3, 50));
+            file_put_contents($ruta . $producto['id']. '.png', $generator->getBarcode($producto['codigo'], $generator::TYPE_CODE_128, 3, 50));
         }
         ob_start();
         $data['title'] = 'Barcode';

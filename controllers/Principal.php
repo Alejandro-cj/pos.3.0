@@ -24,17 +24,19 @@ class Principal extends Controller
         if (isset($_POST['correo']) && isset($_POST['clave'])) {
             if (empty($_POST['correo'])) {
                 $res = array('msg' => 'EL CORREO ES REQUERIDO', 'type' => 'warning');
-            } else if (empty($_POST['clave'])) {
+            }else if(empty($_POST['clave'])){
                 $res = array('msg' => 'LA CONTRASEÑA ES REQUERIDO', 'type' => 'warning');
-            } else {
+            }else{
                 $correo = strClean($_POST['correo']);
                 $clave = strClean($_POST['clave']);
                 $data = $this->model->getDatos($correo);
                 if (empty($data)) {
                     $res = array('msg' => 'EL CORREO NO EXISTE', 'type' => 'warning');
-                } else {
+                }else{
                     if ($data['estado'] == 1) {
                         if (password_verify($clave, $data['clave'])) {
+                            $permisos = json_decode($data['permisos'], true);
+                            $_SESSION['permisos'] = $permisos;
                             $_SESSION['id_usuario'] = $data['id'];
                             $_SESSION['nombre_usuario'] = $data['nombre'];
                             $_SESSION['correo_usuario'] = $data['correo'];
@@ -48,16 +50,19 @@ class Principal extends Controller
                                 $res = array('msg' => 'DATOS CORRECTO', 'type' => 'success');
                             } else {
                                 $res = array('msg' => 'ERROR AL CAPTURAR LOS DATOS DEL INICIO', 'type' => 'error');
-                            }
-                        } else {
+                            }                        
+                            
+                        }else{
                             $res = array('msg' => 'CONTRASEÑA INCORRECTA', 'type' => 'warning');
                         }
                     } else {
                         $res = array('msg' => 'USUARIO INACTIVO', 'type' => 'warning');
                     }
+                    
+                    
                 }
-            }
-        } else {
+            }            
+        }else {
             $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
         }
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
@@ -100,7 +105,7 @@ class Principal extends Controller
                 $mail->Port       = PUERTO_SMTP;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                 //Recipients
-                $mail->setFrom('alejandrocj2002@gmail.com', 'EMPRESA DE ALEJO');
+                $mail->setFrom('angelsifuentes2580@gmail.com', 'VIDA INFORMATICO');
                 $mail->addAddress($correo);
 
                 //Content
@@ -108,7 +113,7 @@ class Principal extends Controller
                 $mail->CharSet = 'UTF-8';                                  //Set email format to HTML
                 $mail->Subject = 'Restablecer Contraseña - ' . TITLE;
                 $mail->Body    = 'Has pedido restablecer tu contraseña, si no has sido omite este mensaje <br />
-            Para cambiar <a href="' . BASE_URL . 'principal/reset/' . $token . '">CLICK AQUI</a>';
+            Para cambiar <a href="'.BASE_URL.'principal/reset/'.$token.'">CLICK AQUI</a>';
 
                 $mail->send();
 
@@ -118,10 +123,11 @@ class Principal extends Controller
                 } else {
                     $res = array('msg' => 'ERROR AL REGISTRAR EL TOKEN', 'type' => 'error');
                 }
+                
             } catch (Exception $e) {
                 $res = array('msg' => 'ERROR AL ENVIAR EL CORREO: ' . $mail->ErrorInfo, 'type' => 'error');
             }
-        } else {
+        }else{
             $res = array('msg' => 'EL CORREO NO ESTA REGISTRADO', 'type' => 'warning');
         }
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
@@ -137,7 +143,7 @@ class Principal extends Controller
         $token = strClean($datos['token']);
         if (empty($nueva) || empty($confirmar)) {
             $res = array('msg' => 'TODO LOS CAMPOS CON * SON REQUERIDOS', 'type' => 'warning');
-        } else {
+        }else{
             if ($nueva != $confirmar) {
                 $res = array('msg' => 'LAS CONTRASEÑAS NO COINCIDEN', 'type' => 'warning');
             } else {
@@ -148,7 +154,9 @@ class Principal extends Controller
                 } else {
                     $res = array('msg' => 'ERROR AL MODIFICAR', 'type' => 'error');
                 }
+                
             }
+            
         }
 
         echo json_encode($res, JSON_UNESCAPED_UNICODE);

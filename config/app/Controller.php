@@ -1,6 +1,6 @@
 <?php
 class Controller{
-    protected $views, $model;
+    public $views, $model;
     public function __construct() {
         $this->views = new Views();
         $this->cargarModel();
@@ -15,3 +15,5 @@ class Controller{
         }
     }
 }
+
+?>

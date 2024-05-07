@@ -8,10 +8,10 @@ class VentasModel extends Query{
         $sql = "SELECT * FROM productos WHERE id = $idProducto";
         return $this->select($sql);
     }
-    public function registrarVenta($productos, $total, $fecha, $hora, $metodo, $descuento, $serie, $idCliente, $idusuario)
+    public function registrarVenta($productos, $total, $fecha, $hora, $metodo, $descuento, $serie, $pago, $idCliente, $idusuario)
     {
-        $sql = "INSERT INTO ventas (productos, total, fecha, hora, metodo, descuento, serie, id_cliente, id_usuario) VALUES (?,?,?,?,?,?,?,?,?)";
-        $array = array($productos, $total, $fecha, $hora, $metodo, $descuento, $serie, $idCliente, $idusuario);
+        $sql = "INSERT INTO ventas (productos, total, fecha, hora, metodo, descuento, serie, pago, id_cliente, id_usuario) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $array = array($productos, $total, $fecha, $hora, $metodo, $descuento, $serie, $pago, $idCliente, $idusuario);
         return $this->insertar($sql, $array);
     }
     public function actualizarStock($cantidad, $ventas, $idProducto)
@@ -34,7 +34,7 @@ class VentasModel extends Query{
 
     public function getVenta($idVenta)
     {
-        $sql = "SELECT v.*, c.identidad, c.num_identidad, c.nombre, c.telefono, c.direccion FROM ventas v INNER JOIN clientes c ON v.id_cliente = c.id WHERE v.id = $idVenta";
+        $sql = "SELECT v.*, c.identidad, c.num_identidad, c.nombre, c.telefono, c.correo, c.direccion FROM ventas v INNER JOIN clientes c ON v.id_cliente = c.id WHERE v.id = $idVenta";
         return $this->select($sql);
     }
 

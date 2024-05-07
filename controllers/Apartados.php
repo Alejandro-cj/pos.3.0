@@ -14,6 +14,10 @@ class Apartados extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('apartados')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $this->id_usuario = $_SESSION['id_usuario'];
     }
     public function index()
@@ -62,7 +66,7 @@ class Apartados extends Controller
                     foreach ($datos['productos'] as $producto) {
                         $result = $this->model->getProducto($producto['id']);
                         //actualizar stock
-                        $nuevaCantidad = $result['cantidad'] + $producto['cantidad'];
+                        $nuevaCantidad = $result['cantidad'] - $producto['cantidad'];
                         $totalVentas = $result['ventas'] + $producto['cantidad'];
                         $this->model->actualizarStock($nuevaCantidad, $totalVentas, $result['id']);                        
                         //movimientos

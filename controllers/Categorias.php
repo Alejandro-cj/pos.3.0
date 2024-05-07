@@ -9,6 +9,10 @@ class Categorias extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('categorias')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
     }
     public function index()
     {

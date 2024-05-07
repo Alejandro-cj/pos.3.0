@@ -9,6 +9,10 @@ class Cotizaciones extends Controller{
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('cotizaciones')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
     }
     public function index()
     {

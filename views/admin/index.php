@@ -48,7 +48,7 @@
                     <span id="errorDireccion" class="text-danger"></span>
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-2">
-                    <label>Impuesto (Opcional IVA)</label>
+                    <label>Impuesto (Opcional)</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                         <input type="number" id="impuesto" name="impuesto" class="form-control" value="<?php echo $data['empresa']['impuesto']; ?>" placeholder="Impuesto">

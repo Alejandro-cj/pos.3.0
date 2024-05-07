@@ -99,8 +99,9 @@
                                 <label class="input-group-text" for="rol"><i class="fas fa-id-card"></i></label>
                                 <select class="form-select" id="rol" name="rol">
                                     <option value="" selected>Seleccionar</option>
-                                    <option value="1">ADMINISTRADOR</option>
-                                    <option value="2">VENDEDOR</option>
+                                    <?php foreach ($data['roles'] as $rol) { ?>
+                                    <option value="<?php echo $rol['id']; ?>"><?php echo $rol['nombre']; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <span id="errorRol" class="text-danger"></span>

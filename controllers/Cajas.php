@@ -12,6 +12,10 @@ class Cajas extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('cajas')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $this->id_usuario = $_SESSION['id_usuario'];
     }
     public function index()

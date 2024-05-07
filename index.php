@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Bogota');
 require_once 'config/Config.php';
 require_once 'config/Helpers.php';
 $ruta = (!empty($_GET['url'])) ? $_GET['url'] : 'principal/index';

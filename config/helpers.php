@@ -29,4 +29,9 @@ function strClean($cadena)
     $string = str_ireplace('==', '', $string);
     return $string;
 }
-?>
+
+function verificar($valor)
+{
+    $indice = array_search($valor, $_SESSION['permisos'], true);
+    return is_numeric($indice);
+}

@@ -7,6 +7,10 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 use Dompdf\Dompdf;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Ventas extends Controller
 {
     private $id_usuario;
@@ -16,6 +20,10 @@ class Ventas extends Controller
         session_start();
         if (empty($_SESSION['id_usuario'])) {
             header('Location: ' . BASE_URL);
+            exit;
+        }
+        if (!verificar('ventas')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
         $this->id_usuario = $_SESSION['id_usuario'];
@@ -41,8 +49,7 @@ class Ventas extends Controller
         if (!empty($datos['productos'])) {
             $fecha = date('Y-m-d');
             $hora = date('H:i:s');
-            $metodo = $datos['metodo'];
-
+            $metodo = $datos['metodo'];            
             $resultSerie = $this->model->getSerie();
             $numSerie = ($resultSerie['total'] == null) ? 1 : $resultSerie['total'] + 1;
 
@@ -62,14 +69,15 @@ class Ventas extends Controller
                         $result = $this->model->getProducto($producto['id']);
                         $data['id'] = $result['id'];
                         $data['nombre'] = $result['descripcion'];
-                        $data['precio'] = $result['precio_venta'];
+                        $data['precio'] = $producto['precio'];
                         $data['cantidad'] = $producto['cantidad'];
-                        $subTotal = $result['precio_venta'] * $producto['cantidad'];
+                        $subTotal = $producto['precio'] * $producto['cantidad'];
                         array_push($array['productos'], $data);
                         $total += $subTotal;
                     }
                     $datosProductos = json_encode($array['productos']);
-                    $venta = $this->model->registrarVenta($datosProductos, $total, $fecha, $hora, $metodo, $descuento, $serie[0], $idCliente, $this->id_usuario);
+                    $pago = (!empty($datos['pago'])) ? $datos['pago'] : $total;
+                    $venta = $this->model->registrarVenta($datosProductos, $total, $fecha, $hora, $metodo, $descuento, $serie[0], $pago, $idCliente, $this->id_usuario);
                     if ($venta > 0) {
                         foreach ($datos['productos'] as $producto) {
                             $result = $this->model->getProducto($producto['id']);
@@ -300,5 +308,53 @@ class Ventas extends Controller
             $result[] = str_pad($n, $digits, "0", STR_PAD_LEFT);
         }
         return $result;
+    }
+
+    // ENVIAR TICKET AL CORREO DEL CLIENTE
+    public function enviarCorreo($idVenta)
+    {
+        $data['empresa'] = $this->model->getEmpresa();
+        $data['venta'] = $this->model->getVenta($idVenta);
+        ob_start();
+        $data['title'] = 'Reporte';
+        $this->views->getView('ventas', 'ticket_cliente', $data);
+        $html = ob_get_clean();
+        if (!empty($data)) {
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail->SMTPDebug = 0;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = HOST_SMTP;                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = USER_SMTP;                     //SMTP username
+                $mail->Password   = CLAVE_SMTP;                               //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = PUERTO_SMTP;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail->setFrom($data['empresa']['correo'], $data['empresa']['nombre']);
+                $mail->addAddress($data['venta']['correo']);
+
+                //Content
+                $mail->isHTML(true);
+                $mail->CharSet = 'UTF-8';                                  //Set email format to HTML
+                $mail->Subject = 'Comprobante - ' . TITLE;
+                $mail->Body    = $html;
+
+                $mail->send();
+
+                $res = array('msg' => 'CORREO ENVIADO CON LOS DATOS DE LA VENTA', 'type' => 'success');
+
+                
+            } catch (Exception $e) {
+                $res = array('msg' => 'ERROR AL ENVIAR EL CORREO: ' . $mail->ErrorInfo, 'type' => 'error');
+            }
+        }else{
+            $res = array('msg' => 'VENTA NO ENCONTRADA', 'type' => 'warning');
+        }
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+        die();
     }
 }

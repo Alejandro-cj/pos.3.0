@@ -97,12 +97,23 @@
                     </div>
 
                     <div class="col-md-4">
+                        <label>Pagar con</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            <input class="form-control" type="text" id="pagar_con" placeholder="0.00">
+                        </div>
+                        <label>Cambio</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            <input class="form-control" type="text" id="cambio" placeholder="0.00" readonly>
+                        </div>
                         <label>Vendedor</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                             <input class="form-control" type="text" value="<?php echo $_SESSION['nombre_usuario']; ?>" placeholder="Vendedor" disabled>
                         </div>
-
+                    </div>
+                    <div class="col-md-4">                       
                         <label>Descuento</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
@@ -113,6 +124,7 @@
                         <div class="input-group mb-2">
                             <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                             <input class="form-control" type="text" id="totalPagar" placeholder="Total Pagar" disabled>
+                            <input class="form-control" type="hidden" id="totalPagarHidden" >
                         </div>
 
                         <div class="form-group mb-2">

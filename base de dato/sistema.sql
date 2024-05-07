@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2024 a las 20:52:22
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 20-07-2023 a las 02:14:36
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,72 +49,6 @@ CREATE TABLE `acceso` (
   `detalle` text NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `acceso`
---
-
-INSERT INTO `acceso` (`id`, `evento`, `ip`, `detalle`, `fecha`) VALUES
-(1, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:02:51'),
-(2, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:23:51'),
-(3, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:26:20'),
-(4, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:29:12'),
-(5, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:38:33'),
-(6, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 16:50:01'),
-(7, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 20:57:49'),
-(8, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-09 21:20:00'),
-(9, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 00:28:42'),
-(10, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 00:28:58'),
-(11, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 00:29:35'),
-(12, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 01:04:46'),
-(13, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 15:23:31'),
-(14, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-10 15:45:49'),
-(15, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-11 01:09:47'),
-(16, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-11 01:26:20'),
-(17, 'Inicio de Sesión', '192.168.238.232', 'Mozilla/5.0 (Linux; Android 12; V2035) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36', '2023-01-11 01:46:45'),
-(18, 'Cierre de Sesión', '192.168.238.232', 'Mozilla/5.0 (Linux; Android 12; V2035) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36', '2023-01-11 01:50:53'),
-(19, 'Inicio de Sesión', '192.168.238.170', 'Mozilla/5.0 (Linux; Android 11; moto e20) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36', '2023-01-11 02:12:29'),
-(20, 'Inicio de Sesión', '192.168.238.37', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-11 02:13:09'),
-(21, 'Cierre de Sesión', '192.168.238.37', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-11 02:14:09'),
-(22, 'Cierre de Sesión', '192.168.238.170', 'Mozilla/5.0 (Linux; Android 11; moto e20) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36', '2023-01-11 02:14:17'),
-(23, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-12 02:26:52'),
-(24, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-12 02:28:03'),
-(25, 'Inicio de Sesión', '192.168.1.38', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-12 23:56:46'),
-(26, 'Inicio de Sesión', '192.168.1.37', 'Mozilla/5.0 (Linux; Android 12; V2035) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Mobile Safari/537.36', '2023-01-13 00:05:57'),
-(27, 'Cierre de Sesión', '192.168.1.38', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', '2023-01-13 00:31:56'),
-(28, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-13 23:29:20'),
-(29, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:35:26'),
-(30, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:11'),
-(31, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:17'),
-(32, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:24'),
-(33, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:24'),
-(34, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:25'),
-(35, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:25'),
-(36, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:51'),
-(37, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:52'),
-(38, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:52'),
-(39, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:36:52'),
-(40, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:37:11'),
-(41, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:37:14'),
-(42, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:37:17'),
-(43, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:37:17'),
-(44, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:40:19'),
-(45, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:40:43'),
-(46, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:02'),
-(47, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:04'),
-(48, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:04'),
-(49, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:04'),
-(50, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:04'),
-(51, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:05'),
-(52, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:42:26'),
-(53, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', '2023-01-14 00:50:31'),
-(54, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-04-28 19:56:55'),
-(55, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-04-28 20:23:07'),
-(56, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-05-06 20:37:41'),
-(57, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-05-06 21:19:37'),
-(58, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-05-07 00:13:34'),
-(59, 'Cierre de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-05-07 01:49:54'),
-(60, 'Inicio de Sesión', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', '2024-05-07 18:47:53');
 
 -- --------------------------------------------------------
 
@@ -166,6 +100,8 @@ INSERT INTO `cajas` (`id`, `monto_inicial`, `fecha_apertura`, `fecha_cierre`, `m
 
 -- --------------------------------------------------------
 
+-- --------------------------------------------------------
+
 --
 -- Estructura de tabla para la tabla `categorias`
 --
@@ -198,7 +134,6 @@ INSERT INTO `categorias` (`id`, `categoria`, `fecha`, `estado`) VALUES
 (14, 'Accesorios de Electrónica', '2024-05-06 21:06:04', 1),
 (15, 'Wearables', '2024-05-06 21:06:04', 1);
 
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `clientes`
@@ -216,6 +151,7 @@ CREATE TABLE `clientes` (
   `estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
 --
 -- Volcado de datos para la tabla `clientes`
 --
@@ -252,8 +188,6 @@ INSERT INTO `clientes` (`id`, `identidad`, `num_identidad`, `nombre`, `telefono`
 (29, 'CC', '987654343', 'Veinticuatroavo Cliente', '123456801', 'veinticuatroavocliente@gmail.com', 'Dirección 24', '2024-05-06 20:58:36', 1),
 (30, 'CC', '987654344', 'Veinticincoavo Cliente', '123456802', 'veinticincoavocliente@gmail.com', 'Dirección 25', '2024-05-06 20:58:36', 1);
 
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `compras`
 --
@@ -271,6 +205,7 @@ CREATE TABLE `compras` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
 --
 -- Volcado de datos para la tabla `compras`
 --
@@ -304,8 +239,6 @@ INSERT INTO `compras` (`id`, `productos`, `total`, `fecha`, `hora`, `serie`, `es
 (26, '[{\"id\":29,\"nombre\":\"Laptop Dell XPS 13\",\"precio\":\"1200.00\",\"cantidad\":\"6\"}]', 7200.00, '2024-02-05', '12:45:55', '00013468', 1, 0, 1, 1),
 (27, '[{\"id\":30,\"nombre\":\"Tableta Apple iPad Pro\",\"precio\":\"900.00\",\"cantidad\":\"8\"}]', 7200.00, '2024-05-10', '14:20:30', '00013469', 1, 0, 1, 1),
 (28, '[{\"id\":31,\"nombre\":\"Teléfono inteligente Samsung Galaxy S21\",\"precio\":\"800.00\",\"cantidad\":\"10\"}]', 8000.00, '2024-04-15', '16:10:45', '00013470', 1, 0, 1, 1);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `configuracion`
@@ -368,9 +301,6 @@ CREATE TABLE `creditos` (
 
 INSERT INTO `creditos` (`id`, `monto`, `fecha`, `hora`, `estado`, `id_venta`) VALUES
 (1, -200.00, '2023-01-09', '22:05:50', 0, 2);
-
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `detalle_apartado`
 --
@@ -415,8 +345,6 @@ INSERT INTO `gastos` (`id`, `monto`, `descripcion`, `foto`, `fecha`, `apertura`,
 (8, 150.00, 'Gastos de publicidad en redes sociales', NULL, '2024-05-07 01:21:49', 0, 1),
 (9, 200.00, 'Compra de suministros de empaque', NULL, '2024-05-07 01:21:49', 0, 1),
 (10, 180.00, 'Pago de membresía de software', NULL, '2024-05-07 01:21:49', 0, 1);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventario`
@@ -465,9 +393,6 @@ INSERT INTO `inventario` (`id`, `movimiento`, `accion`, `cantidad`, `stock_actua
 (26, 'Compra N°: 42', 'entrada', 2, 2, '2024-05-07 23:30:00', 2, 1),
 (27, 'Compra N°: 43', 'entrada', 5, 5, '2024-05-08 00:00:00', 1, 1),
 (28, 'Venta N°: 73', 'salida', 5, 10, '2024-05-07 01:09:46', 9, 1);
-
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `medidas`
 --
@@ -479,10 +404,6 @@ CREATE TABLE `medidas` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `medidas`
---
 
 INSERT INTO `medidas` (`id`, `medida`, `nombre_corto`, `fecha`, `estado`) VALUES
 (1, 'primera medida xd', 'pm', '2023-01-09 16:39:53', 1),
@@ -500,6 +421,36 @@ INSERT INTO `medidas` (`id`, `medida`, `nombre_corto`, `fecha`, `estado`) VALUES
 (13, 'Metro cúbico', 'm³', '2024-05-06 21:01:55', 1),
 (14, 'Gramo', 'g', '2024-05-06 21:01:55', 1),
 (15, 'Kilogramo', 'kg', '2024-05-06 21:01:55', 1);
+--
+-- Estructura de tabla para la tabla `permisos`
+--
+
+CREATE TABLE `permisos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `permisos`
+--
+
+INSERT INTO `permisos` (`id`, `nombre`) VALUES
+(1, 'usuarios'),
+(2, 'roles'),
+(3, 'configuracion'),
+(4, 'log de acceso'),
+(5, 'medidas'),
+(6, 'categorias'),
+(7, 'productos'),
+(8, 'clientes'),
+(9, 'proveedores'),
+(10, 'cajas'),
+(11, 'compras'),
+(12, 'ventas'),
+(13, 'credito ventas'),
+(14, 'cotizaciones'),
+(15, 'apartados'),
+(16, 'inventario');
 
 -- --------------------------------------------------------
 
@@ -548,8 +499,6 @@ INSERT INTO `productos` (`id`, `codigo`, `descripcion`, `precio_compra`, `precio
 (19, '123470', 'Tarjeta gráfica NVIDIA GeForce RTX 3080', 800.00, 1000.00, 6, 'assets/images/productos/nvidia_rtx3080.jpg', 1, '2024-05-06 21:13:12', 0, 11, 1),
 (20, '123471', 'Estuche de carga inalámbrica para iPhone', 30.00, 50.00, 25, 'assets/images/productos/wireless_charging_case.jpg', 1, '2024-05-06 21:13:12', 0, 6, 1);
 
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `proveedor`
 --
@@ -583,6 +532,26 @@ INSERT INTO `proveedor` (`id`, `ruc`, `nombre`, `telefono`, `correo`, `direccion
 (11, '123123123', 'Tecnología Integral E.I.R.L.', '789012345', 'tecnologiaintegral@example.com', 'Plaza Integral #606', '2024-05-07 00:25:04', 1),
 (12, '234234234', 'Soluciones Informáticas Torres', '678901234', 'solucionesinformaticas@example.com', 'Avenida Soluciones #707', '2024-05-07 00:25:04', 1);
 
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `permisos` text DEFAULT NULL,
+  `estado` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `nombre`, `permisos`, `estado`) VALUES
+(1, 'ADMINISTRADOR', '[\"usuarios\",\"roles\",\"configuracion\",\"log de acceso\",\"medidas\",\"categorias\",\"productos\",\"clientes\",\"proveedores\",\"cajas\",\"compras\",\"ventas\",\"credito ventas\",\"cotizaciones\",\"apartados\",\"inventario\"]', 1),
+(2, 'SUPERVISOR', '[\"cajas\",\"inventario\"]', 1),
+(3, 'vendedor', '[\"productos\",\"clientes\",\"ventas\",\"cotizaciones\"]', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -611,7 +580,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `correo`, `telefono`, `direccion`, `perfil`, `clave`, `token`, `fecha`, `estado`, `rol`) VALUES
 (1, 'ALEJANDRO', 'COGOLLO', 'alejandrocj2002@gmail.com', '3046811778', 'CARTAGENA COLOMBIA', NULL, '$2y$10$PBVfztrP.ynI6stFCV3vtOtF9asUF4yIfUjTQ5aXhE1xZEzb0DH3a', '65265522b58828fdaaecb4b07fe9bb0c', '2023-01-13 00:52:38', 1, 1),
 (2, 'SEGUNDO', 'USUARIO', 'segundousers@gmail.com', '23984283', 'CARTAGENA COLOMBIA', NULL, '$2y$10$iEqpvM8zHShRgJPKwgkIeeO1MqG6b6Ka2Y7vhJtOXe4KShEv3pN8i', NULL, '2023-01-14 00:35:21', 0, 2),
-(3, 'LEIDY DANIELA', 'DE LA PUENTE', 'leididanielapg2004@gmail.com', '3218381415', 'CARTAGENA - BOLIVAR', 'assets/images/perfil/20230113010743leididanielapg2004@gmail.com.jpg', '$2y$10$W9oMsj3u/csLBdcY2oDzjOlBM5ZW75QQhWHzKqM8Vbwwpoig6ATSS', NULL, '2023-01-13 00:07:43', 1, 2);
+(3, 'LEIDY DANIELA', 'DE LA PUENTE', 'leididanielapg2004@gmail.com', '3218381415', 'CARTAGENA - BOLIVAR', 'assets/images/perfil/20230113010743leididanielapg2004@gmail.com.jpg', '$2y$10$W9oMsj3u/csLBdcY2oDzjOlBM5ZW75QQhWHzKqM8Vbwwpoig6ATSS', NULL, '2023-01-13 00:07:43', 1, 2),
+(4, 'Juan Camilo', 'Gaviria', 'juan@gmail.com', '123345567', 'malambo', NULL, '$2y$10$qL5/1X0VKboJPCbdyFZHTetU1EIMJXj5CNwDY6y7sq9DXKn2AjihW', NULL, '2024-05-07 19:09:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -628,6 +598,7 @@ CREATE TABLE `ventas` (
   `metodo` varchar(15) NOT NULL,
   `descuento` decimal(10,2) NOT NULL DEFAULT 0.00,
   `serie` varchar(20) NOT NULL,
+  `pago` decimal(10,2) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT 1,
   `apertura` int(11) NOT NULL DEFAULT 1,
   `id_cliente` int(11) NOT NULL,
@@ -713,9 +684,6 @@ INSERT INTO `ventas` (`id`, `productos`, `total`, `fecha`, `hora`, `metodo`, `de
 (72, '[{\"id\":20,\"nombre\":\"prueba de barras xd\",\"precio\":\"1500.00\",\"cantidad\":\"2\"}]', 3000.00, '2024-05-18', '12:00:00', 'CREDITO', 0.00, '000021', 1, 0, 1, 1),
 (73, '[{\"id\":9,\"nombre\":\"Auriculares inal\\u00e1mbricos Sony WH-1000XM4\",\"precio\":\"350.00\",\"cantidad\":\"5\"}]', 1750.00, '2024-05-07', '03:09:45', 'CONTADO', 0.00, '00000073', 1, 0, 2, 1);
 
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `abonos`
@@ -812,6 +780,12 @@ ALTER TABLE `medidas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -826,10 +800,17 @@ ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rol` (`rol`);
 
 --
 -- Indices de la tabla `ventas`
@@ -853,7 +834,7 @@ ALTER TABLE `abonos`
 -- AUTO_INCREMENT de la tabla `acceso`
 --
 ALTER TABLE `acceso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `apartados`
@@ -865,25 +846,25 @@ ALTER TABLE `apartados`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
@@ -901,7 +882,7 @@ ALTER TABLE `cotizaciones`
 -- AUTO_INCREMENT de la tabla `creditos`
 --
 ALTER TABLE `creditos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_apartado`
@@ -913,31 +894,43 @@ ALTER TABLE `detalle_apartado`
 -- AUTO_INCREMENT de la tabla `gastos`
 --
 ALTER TABLE `gastos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `medidas`
 --
 ALTER TABLE `medidas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -949,7 +942,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -1011,6 +1004,12 @@ ALTER TABLE `inventario`
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`),
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`id_medida`) REFERENCES `medidas` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventas`

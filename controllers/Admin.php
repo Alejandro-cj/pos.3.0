@@ -36,7 +36,7 @@ class Admin extends Controller
     //datos de la empres
     public function datos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('configuracion')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -48,7 +48,7 @@ class Admin extends Controller
     //modificar datos
     public function modificar()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('configuracion')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -361,7 +361,7 @@ class Admin extends Controller
     //logs de acceso
     public function logs()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('configuracion')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -372,7 +372,7 @@ class Admin extends Controller
 
     public function listarLogs()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('configuracion')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }
@@ -383,7 +383,7 @@ class Admin extends Controller
 
     public function limpiraDatos()
     {
-        if ($_SESSION['rol'] == 2) {
+        if (!verificar('configuracion')){
             header('Location: ' . BASE_URL . 'admin/permisos');
             exit;
         }

@@ -12,12 +12,20 @@ class Clientes extends Controller
     }
     public function index()
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $data['title'] = 'Clientes';
         $data['script'] = 'clientes.js';
         $this->views->getView('clientes', 'index', $data);
     }
     public function listar()
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $data = $this->model->getClientes(1);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['acciones'] = '<div>
@@ -30,6 +38,10 @@ class Clientes extends Controller
     }
     public function registrar()
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         if (isset($_POST['identidad']) && isset($_POST['num_identidad'])) {
             $id = strClean($_POST['id']);
             $identidad = strClean($_POST['identidad']);
@@ -125,6 +137,10 @@ class Clientes extends Controller
 
     public function eliminar($idCliente)
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         if (isset($_GET) && is_numeric($idCliente)) {
             $data = $this->model->eliminar(0, $idCliente);
             if ($data > 0) {
@@ -141,6 +157,10 @@ class Clientes extends Controller
 
     public function editar($idCliente)
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $data = $this->model->editar($idCliente);
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
@@ -148,12 +168,20 @@ class Clientes extends Controller
 
     public function inactivos()
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $data['title'] = 'Clientes  Inactivos';
         $data['script'] = 'clientes-inactivos.js';
         $this->views->getView('clientes', 'inactivos', $data);
     }
     public function listarInactivos()
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $data = $this->model->getClientes(0);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['acciones'] = '<div>
@@ -165,6 +193,10 @@ class Clientes extends Controller
     }
     public function restaurar($idCliente)
     {
+        if (!verificar('clientes')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         if (isset($_GET) && is_numeric($idCliente)) {
             $data = $this->model->eliminar(1, $idCliente);
             if ($data > 0) {

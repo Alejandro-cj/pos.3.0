@@ -9,6 +9,10 @@ class Medidas extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('medidas')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
     }
     public function index()
     {

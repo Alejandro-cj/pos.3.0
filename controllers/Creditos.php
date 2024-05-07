@@ -12,6 +12,10 @@ class Creditos extends Controller
             header('Location: ' . BASE_URL);
             exit;
         }
+        if (!verificar('credito ventas')){
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
         $this->id_usuario = $_SESSION['id_usuario'];
     }
     public function index()
@@ -28,7 +32,7 @@ class Creditos extends Controller
             $result = $this->model->getAbono($data[$i]['id']);
             $abonado = ($result['total'] == null) ? 0 : $result['total'];
             $restante = $data[$i]['monto'] - $abonado;
-            if ($restante < 1 && $credito['estado'] = 1) {
+            if ($restante < 0.1 && $credito['estado'] = 1) {
                 $this->model->actualizarCredito(0, $data[$i]['id']);
             }
             $data[$i]['monto'] = number_format($data[$i]['monto'], 2);
@@ -60,8 +64,8 @@ class Creditos extends Controller
             //calcular restante  (monto - abono)
             $restante = $row['monto'] - $abonado;
             $result['monto'] = $row['monto'];
-            $result['abonado'] = $abonado;
-            $result['restante'] = $restante;
+            $result['abonado'] = number_format($abonado, 2, '.', '');
+            $result['restante'] = number_format($restante, 2, '.', '');
             $result['fecha'] = $row['fecha'];
             $result['id'] = $row['id'];
             $result['label'] = $row['nombre'];
