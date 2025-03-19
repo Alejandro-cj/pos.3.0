@@ -1,4 +1,4 @@
- **sistema de ventas**
+ **Sistema de ventas**
 
 desarrollado utilizando la arquitectura **MVC (Modelo-Vista-Controlador)**.
 
